@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KangKang Mobile - Hệ thống điện thoại uy tín</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <style>
+    :root {
+      --primary-color: #0d6efd;
+      --dark-color: #212529;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f8f9fa;
+    }
+
+    /* Header & Navbar */
+    .top-header {
+      background: var(--dark-color);
+      color: white;
+      font-size: 13px;
+      padding: 8px 0;
+    }
+
+    .top-link {
+      color: #ccc;
+      text-decoration: none;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .top-link:hover {
+      color: white;
+    }
+
+    .navbar {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Sidebar Menu */
+    .frame-danhmuc {
+      background: white;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    }
+
+    .frame-danhmuc h3 {
+      font-size: 18px;
+      font-weight: bold;
+      border-bottom: 2px solid var(--primary-color);
+      padding-bottom: 10px;
+      margin-bottom: 15px;
+    }
+
+    .main-menu {
+      list-style: none;
+      padding: 0;
+    }
+
+    .main-menu>li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+      font-weight: 500;
+    }
+
+    .sub-menu {
+      list-style: none;
+      padding-left: 15px;
+      margin-top: 10px;
+      display: none;
+    }
+
+    .sub-menu li {
+      padding: 5px 0;
+      font-weight: normal;
+      color: #555;
+    }
+
+    .sub-menu li:hover {
+      color: var(--primary-color);
+    }
+
+    /* Product Cards */
+    .card {
+      border: none;
+      border-radius: 12px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      overflow: hidden;
+      height: 100%;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-img-top {
+      height: 200px;
+      object-fit: contain;
+      padding: 15px;
+    }
+
+    .card-title {
+      font-size: 16px;
+      font-weight: bold;
+      height: 40px;
+      overflow: hidden;
+    }
+
+    .price {
+      color: #d70018;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 50px 0 20px;
+      margin-top: 50px;
+    }
+
+    .social-icons a {
+      width: 35px;
+      height: 35px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #444;
+      color: white;
+      border-radius: 50%;
+      margin-right: 10px;
+      transition: 0.3s;
+    }
+
+    .social-icons a:hover {
+      background: var(--primary-color);
+    }
+
+    /* Login Modal */
+    .modal-content {
+      border-radius: 15px;
+      border: none;
+    }
+
+    .btn-login-submit {
+      width: 100%;
+      border-radius: 25px;
+      padding: 10px;
+      font-weight: bold;
+    }
+
+    /* Tùy chỉnh phần Danh mục nổi bật */
+    .section-title-box {
+      background: #fff;
+      padding: 10px 15px;
+      border-bottom: 1px solid #eee;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+
+    .portfolio-container {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 15px;
+    }
+
+    /* Banner Portfolio */
+    .banner-portfolio img {
+      width: 100%;
+      border-radius: 4px;
+      object-fit: cover;
+    }
+
+    /* Custom Tabs */
+    .custom-tabs {
+      display: flex;
+      gap: 30px;
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      margin-bottom: 20px;
+    }
+
+    .custom-tabs a {
+      text-decoration: none;
+      color: #666;
+      font-weight: 500;
+      padding: 5px 15px;
+      transition: 0.3s;
+    }
+
+    .custom-tabs a.active {
+      background: #333;
+      color: #fff !important;
+      border-radius: 20px;
+    }
+
+    /* Sidebar nổi bật */
+    .sidebar-featured {
+      border-left: 1px solid #eee;
+      padding-left: 15px;
+    }
+
+    .featured-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px dotted #ccc;
+    }
+
+    .featured-item:last-child {
+      border-bottom: none;
+    }
+
+    .featured-item img {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      border: 1px solid #f0f0f0;
+    }
+
+    .featured-item .info a {
+      font-size: 13px;
+      color: #0066cc;
+      text-decoration: none;
+      line-height: 1.4;
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .featured-item .info span {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .btn-yellow {
+      background-color: #ffb400;
+      color: #000;
+      font-weight: bold;
+      border: none;
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .btn-yellow:hover {
+      background-color: #e6a200;
+    }
+
+    /* Card sản phẩm nhỏ trong lưới */
+    .product-card-sm {
+      border: 1px solid #eee !important;
+      height: 100%;
+    }
+
+    .product-card-sm .card-title {
+      font-size: 13px;
+      height: 38px;
+      overflow: hidden;
+      color: #333;
+    }
+
+    .price-sm {
+      color: #d70018;
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .old-price {
+      text-decoration: line-through;
+      color: #999;
+      font-size: 12px;
+    }
+
+    /* Tùy chỉnh modal giỏ hàng */
+    #cartModal .table th {
+      font-size: 14px;
+      text-transform: uppercase;
+    }
+
+    #cartModal .img-thumbnail {
+      border: none;
+      background: #f8f9fa;
+    }
+
+    #cartModal .form-control-sm {
+      text-align: center;
+    }
+
+    #cartModal .btn-outline-secondary:hover {
+      background-color: #dc3545;
+      border-color: #dc3545;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <span><i class="fa-solid fa-phone me-2"></i>Hotline: 0903 456 781</span>
+        </div>
+        <div class="col-md-6 text-end">
+          <span class="top-link me-3"><i class="fa-solid fa-envelope me-2"></i>Liên hệ</span>
+
+          <span class="top-link me-3" data-bs-toggle="modal" data-bs-target="#cartModal">
+            <i class="fa-solid fa-cart-shopping me-2"></i>Giỏ hàng
+            <span class="badge bg-danger rounded-pill">2</span>
+          </span>
+
+          <span class="top-link" data-bs-toggle="modal" data-bs-target="#loginModal">
+            <i class="fa-solid fa-user me-2"></i>Đăng nhập
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="./img/Gemini_Generated_Image_thdyb5thdyb5thdy.png" alt="Logo" style="height:40px">
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Trang Chủ</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">Sản Phẩm</a></li>
+          <li class="nav-item"><a class="nav-link" href="gioithieu.html">Giới Thiệu</a></li>
+          <li class="nav-item"><a class="nav-link" href="tintuc.html">Tin Tức</a></li>
+          <li class="nav-item"><a class="nav-link" href="chitietsp.html">Chi Tiết Sản Phẩm</a></li>
+        </ul>
+        <form class="d-flex">
+          <div class="input-group">
+            <input class="form-control" type="search" placeholder="Tìm điện thoại...">
+            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
+    <div class="row">
+      <div class="col-lg-3 mb-4">
+        <div class="frame-danhmuc">
+          <h3>DANH MỤC</h3>
+          <ul class="main-menu">
+            <li>
+              <i class="fa-solid fa-mobile-screen-button me-2"></i> iPhone (Apple)
+              <ul class="sub-menu">
+                <li>iPhone 15 Pro Max</li>
+                <li>iPhone 14 Series</li>
+                <li>iPhone 13 Series</li>
+              </ul>
+            </li>
+            <li>
+              <i class="fa-solid fa-mobile-button me-2"></i> OPPO
+              <ul class="sub-menu">
+                <li>OPPO Reno Series</li>
+                <li>OPPO A Series</li>
+              </ul>
+            </li>
+            <li>
+              <i class="fa-solid fa-mobile me-2"></i> Redmi / Xiaomi
+              <ul class="sub-menu">
+                <li>Redmi Note 13</li>
+                <li>Xiaomi 14 Pro</li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="col-lg-9">
+        <div class="row">
+          <div id="mainBanner" class="carousel slide mb-4" data-bs-ride="carousel">
+            <div class="carousel-inner rounded-4 shadow-sm">
+              <div class="carousel-item active">
+                <img src="./img/banner/bn1.jpg" class="d-block w-100 " alt="Banner 1 " style="height: 100%;">
+              </div>
+              <div class="carousel-item">
+                <img src="./img/banner/bn3.jpg" class="d-block w-100 " alt="Banner 2" style="height: 100%;">
+              </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#mainBanner" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon"></span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#mainBanner" data-bs-slide="next">
+              <span class="carousel-control-next-icon"></span>
+            </button>
+          </div>
+          <div class="container mb-5">
+            <div class="section-title-box mb-0 shadow-sm rounded-top">
+              <i class="fa-solid fa-house me-2"></i> Danh mục nổi bật
+            </div>
+
+            <div class="portfolio-container shadow-sm rounded-bottom">
+              <div class="row">
+                <div class="col-lg-9">
+                  <div class="banner-portfolio mb-3">
+                    <img src="./img/banner/1.PNG" alt="Portfolio Banner" class="img-fluid">
+                  </div>
+
+                  <div class="custom-tabs">
+                    <a href="#" class="text-muted">Sản phẩm mới</a>
+                    <a href="#" class="active">Bán chạy</a>
+                    <a href="#" class="text-muted">Khuyến mãi</a>
+                  </div>
+
+                  <div class="row g-3">
+                    <div class="col-md-3 col-6">
+                      <div class="card product-card-sm p-2 text-center">
+                        <img src="./img/camera.jpg" class="card-img-top p-2" alt="Camera">
+                        <div class="card-body p-1">
+                          <h6 class="card-title text-start">Bộ kit Camera Vantech 450CVI+ 4 Camera</h6>
+                          <p class="price-sm text-start mb-0">2,150,000₫</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                      <div class="card product-card-sm p-2 text-center">
+                        <img src="./img/Túi chống nc.jpg" class="card-img-top p-2" alt="Túi">
+                        <div class="card-body p-1">
+                          <h6 class="card-title text-start">Túi Chống Nước Anker – A7095</h6>
+                          <p class="price-sm text-start mb-0">200,000₫ <span class="old-price ms-1">500,000₫</span></p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                      <div class="card product-card-sm p-2 text-center">
+                        <img src="./img/laptop.jpg" class="card-img-top p-2" alt="Laptop">
+                        <div class="card-body p-1">
+                          <h6 class="card-title text-start">Laptop ASUS ROG Strix SCAR GL503VS...</h6>
+                          <p class="price-sm text-start mb-0">45,570,000₫</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                      <div class="card product-card-sm p-2 text-center">
+                        <img src="./img/appe watch.png" class="card-img-top p-2" alt="Watch">
+                        <div class="card-body p-1">
+                          <h6 class="card-title text-start">Apple Watch Series 4 Silver Aluminum...</h6>
+                          <p class="price-sm text-start mb-0">10,900,000₫</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-lg-3 sidebar-featured mt-4 mt-lg-0">
+                  <h5 class="fw-bold mb-3">Nổi bật</h5>
+
+                  <div class="featured-item">
+                    <img src="./img/camera.jpg" alt="item">
+                    <div class="info">
+                      <a href="#">Bộ kit Camera Vantech 450CVI+ 4 Camera</a>
+                      <span>2,150,000₫</span>
+                    </div>
+                  </div>
+                  <div class="featured-item">
+                    <img src="./img/camera hành trình.jpg" alt="item">
+                    <div class="info">
+                      <a href="#">Camera Hành trình YI Dash Camera – Dark grey 2K</a>
+                      <span>1,110,000₫</span>
+                    </div>
+                  </div>
+                  <div class="featured-item">
+                    <img src="./img/camera xiami yi.jpg" alt="item">
+                    <div class="info">
+                      <a href="#">Camera Xiaomi Yi - Cloud Dome 1080P</a>
+                      <span>1,250,000₫</span>
+                    </div>
+                  </div>
+                  <div class="featured-item">
+                    <img src="./img/camera ip ko dây.jpg" alt="item">
+                    <div class="info">
+                      <a href="#">Camera IP không dây Dahua IPC-C35P 3.0Mp</a>
+                      <span>1,550,000₫</span>
+                    </div>
+                  </div>
+                  <div class="featured-item">
+                    <img src="./img/camera ip ko dây.jpg" alt="item">
+                    <div class="info">
+                      <a href="#">Camera IP không dây Dahua IPC-C15P</a>
+                      <span>550,000₫</span>
+                    </div>
+                  </div>
+                  <div class="featured-item">
+                    <img src="./img/camera ezviz.jpg" alt="item">
+                    <div class="info">
+                      <a href="#">Camera EZVIZ CS-CV248 ( 1080P, C6T with RF, tích hợp trung tâm báo động )</a>
+                      <span>1,550,000₫</span>
+                    </div>
+                  </div>
+                  <div class="featured-item">
+                    <img src="./img/camera vantech.jpg" alt="item">
+                    <div class="info">
+                      <a href="#">Camera Vantech AI-V2020 (tích hợp trí tuệ nhân tạo</a>
+                      <span>750,000₫</span>
+                    </div>
+                  </div>
+                  <div class="featured-item">
+                    <img src="./img/camera hikvision.jpg" alt="item">
+                    <div class="info">
+                      <a href="#">Camera HikVision SH-2CD2823G8-IW ( không dây/ có dây ) H265+</a>
+                      <span>550,000₫</span>
+                    </div>
+                  </div>
+
+                  <button class="btn btn-yellow text-uppercase">Xem thêm</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h4 class="mb-4 fw-bold text-uppercase border-start border-primary border-4 ps-2">Sản phẩm bán chạy</h4>
+
+          <div class="row g-3" id="spbc">
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 mb-4">
+          <h5 class="fw-bold mb-3">KANG MOBILE</h5>
+          <p class="text-secondary">Hệ thống cửa hàng bán điện thoại chính hãng, giá tốt nhất thị trường. Cam kết chất
+            lượng và dịch vụ hàng đầu Việt Nam.</p>
+        </div>
+        <div class="col-md-4 mb-4 text-center">
+          <h5 class="fw-bold mb-3">LIÊN KẾT NHANH</h5>
+          <ul class="list-unstyled">
+            <li><a href="#" class="text-secondary text-decoration-none">Chính sách bảo hành</a></li>
+            <li><a href="#" class="text-secondary text-decoration-none">Tuyển dụng</a></li>
+            <li><a href="#" class="text-secondary text-decoration-none">Góp ý, khiếu nại</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 mb-4">
+          <h5 class="fw-bold mb-3">THEO DÕI CHÚNG TÔI</h5>
+          <div class="social-icons">
+            <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+          </div>
+          <p class="mt-3 text-secondary small"><i class="fa-solid fa-location-dot me-2"></i> Quận 1, TP. Hồ Chí Minh</p>
+        </div>
+      </div>
+      <hr class="bg-secondary">
+      <div class="text-center text-secondary small">© 2024 KangKang Mobile. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content p-4">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold">ĐĂNG NHẬP</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label class="form-label">Tài khoản</label>
+              <input type="text" class="form-control" id="modal_user" placeholder="Nhập tên đăng nhập">
+            </div>
+            <div class="mb-4">
+              <label class="form-label">Mật khẩu</label>
+              <input type="password" class="form-control" id="modal_pass" placeholder="Nhập mật khẩu">
+            </div>
+            <button type="submit" class="btn btn-primary btn-login-submit">ĐĂNG NHẬP</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="cartModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content p-3">
+        <div class="modal-header border-0">
+          <h5 class="modal-title fw-bold text-primary"><i class="fa-solid fa-cart-shopping me-2"></i>GIỎ HÀNG CỦA BẠN
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="table-responsive">
+            <table class="table align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th>Sản phẩm</th>
+                  <th>Giá</th>
+                  <th style="width: 100px;">Số lượng</th>
+                  <th>Tổng cộng</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="./img/ip/ip 15 pm.jpg" alt="iPhone" class="img-thumbnail me-2" style="width: 50px;">
+                      <span class="small fw-bold">iPhone 15 Pro Max</span>
+                    </div>
+                  </td>
+                  <td class="text-danger fw-bold">29.990.000đ</td>
+                  <td>
+                    <input type="number" class="form-control form-control-sm" value="1">
+                  </td>
+                  <td class="text-danger fw-bold">29.990.000đ</td>
+                  <td><button class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-trash"></i></button></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="d-flex align-items-center">
+                      <img src="./img/oppo/oppo1.jpg" alt="Oppo" class="img-thumbnail me-2" style="width: 50px;">
+                      <span class="small fw-bold">OPPO Reno11 5G</span>
+                    </div>
+                  </td>
+                  <td class="text-danger fw-bold">10.490.000đ</td>
+                  <td>
+                    <input type="number" class="form-control form-control-sm" value="1">
+                  </td>
+                  <td class="text-danger fw-bold">10.490.000đ</td>
+                  <td><button class="btn btn-sm btn-outline-secondary"><i class="fa-solid fa-trash"></i></button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center mt-3 p-3 bg-light rounded">
+            <h5 class="mb-0 fw-bold">Tổng tiền:</h5>
+            <h4 class="mb-0 text-danger fw-bold">40.480.000đ</h4>
+          </div>
+        </div>
+        <div class="modal-footer border-0">
+          <button type="button" class="btn btn-secondary rounded-pill px-4" data-bs-dismiss="modal">Tiếp tục mua
+            sắm</button>
+          <button type="button" class="btn btn-primary rounded-pill px-4 fw-bold">THANH TOÁN NGAY</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(document).ready(function () {
+      // Toggle sidebar menu
+      $(".main-menu > li").click(function (e) {
+        // Ngăn chặn đóng menu nếu click vào menu con
+        if ($(e.target).closest('.sub-menu').length === 0) {
+          $(this).children(".sub-menu").slideToggle();
+        }
+      });
+
+      // Xử lý đăng nhập
+      $("#loginForm").submit(function (event) {
+        event.preventDefault();
+
+        let user = $("#modal_user").val();
+        let password = $("#modal_pass").val();
+
+        if (user === "" || password === "") {
+          alert("Vui lòng nhập đầy đủ thông tin!");
+        } else {
+          if (user === "admin" && password === "1234") {
+            alert("Đăng nhập thành công!");
+            $("#loginModal").modal('hide');
+          } else {
+            alert("Tài khoản hoặc mật khẩu không đúng.");
+          }
+        }
+      });
+    });
+  </script>
+  <script src="js/product.js"></script>\
+  <script src="js/spbc.js"></script>
+
+</body>
+
+</html>

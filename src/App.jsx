@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import TinTuc from "./components/TinTuc";
 import ShowProduct from "./components/ShowProduct";
 import Detail from "./pages/Detail";
+import Products from "./pages/Products";
 export default function App() {
   return (
     <Router>
@@ -19,7 +20,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/index" element={<Home />} />
         <Route path="/gioithieu" element={<About />} />
-        <Route path="/sanpham" element={<ShowProduct />} />
+        <Route path="/sanpham" element={<Products />} />
         <Route path="/contact" element={<h1>Liên hệ</h1>} />
         <Route path="/login" element={<Login />} />
         <Route path="/Detail/:id" element={<Detail />} />

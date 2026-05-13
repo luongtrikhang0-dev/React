@@ -40,13 +40,13 @@ export default function SPKhuyenMai() {
 }
 
 export function SPBanChay() {
-   const spkm = products.filter(sp => sp.loai === "SPKM");
+   const spbc = products.filter(sp => sp.loai === "SPBC");
   return (
      <div className="container">
     <div className="row">
       <h2>Sản phẩm bán chạy</h2>
 
-      {spkm.map(sp => (
+      {spbc.map(sp => (
         <div className="col-md-3" key={sp.id}>
           <div className="card p-3">
             <img
@@ -56,8 +56,16 @@ export function SPBanChay() {
             />
             <div className="card-body">
               <h4 className="card-title">{sp.ten}</h4>
-              <p className="card-text">{sp.gia.toLocaleString()}đ</p>
-              <a href="#" className="btn btn-primary">Mua Ngay</a>
+             <p className="card-text">
+                  {sp.gia.toLocaleString()}đ
+                </p>
+
+                <Link
+                  to={`/Detail/${sp.id}`}
+                  className="btn btn-primary"
+                >
+                  Xem chi tiết
+                </Link>
             </div>
           </div>
         </div>
@@ -70,14 +78,14 @@ export function SPBanChay() {
 }
 
 export function SPHot() {
-  const spkm = products.filter(sp => sp.loai === "SPKM");
+  const spht = products.filter(sp => sp.loai === "SPH");
 
   return (
     <div className="container">
     <div className="row">
-      <h2>Sản phẩm khuyến mãi</h2>
+      <h2>Sản phẩm hot</h2>
 
-      {spkm.map(sp => (
+      {spht.map(sp => (
         <div className="col-md-3" key={sp.id}>
           <div className="card p-3">
             <img
@@ -87,8 +95,16 @@ export function SPHot() {
             />
             <div className="card-body">
               <h4 className="card-title">{sp.ten}</h4>
-              <p className="card-text">{sp.gia.toLocaleString()}đ</p>
-              <a href="#" className="btn btn-primary">Mua Ngay</a>
+             <p className="card-text">
+                  {sp.gia.toLocaleString()}đ
+                </p>
+
+                <Link
+                  to={`/Detail/${sp.id}`}
+                  className="btn btn-primary"
+                >
+                  Xem chi tiết
+                </Link>
             </div>
           </div>
         </div>

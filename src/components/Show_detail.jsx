@@ -1,10 +1,14 @@
 import { useParams, Link } from "react-router-dom";
+import { useLayoutEffect } from "react";
 import products from "../data/products";
 
 export default function Show_detail() {
   const { id } = useParams();
 
   const product = products.find((p) => p.id === parseInt(id));
+  useLayoutEffect(() =>{
+    window.scrollTo(0, 0);
+  }, [id]);
 
   if (!product) {
     return <h2 className="text-center mt-5">Không tìm thấy sản phẩm</h2>;

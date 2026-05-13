@@ -6,23 +6,7 @@ export default function Header() {
     
     <div>
       <header>
-        <div className="row frame-header">
-          <div className="row">
-            <div className="col-md-4 text-center">
-              HOTLINE: 0903456781
-            </div>
-
-            <div className="col-md-4"></div>
-
-            <div className="col-md-4 text-center">
-              <Link to="/login">
-                <button className="btn btn-danger">
-                  Đăng Nhập
-                </button>
-              </Link>
-            </div>
-          </div>
-        </div>
+       
       </header>
 
       <div className="container">
@@ -82,10 +66,16 @@ export default function Header() {
                   placeholder="Search"
                 />
                 <button className="btn btn-primary">
-                  Search
+                  Search 
                 </button>
               </form>
-
+             <div className="col-md-2 text-center">
+              <Link to="/login">
+                <button className="btn btn-danger">
+                  👥
+                </button>
+              </Link>
+            </div>
             </div>
           </div>
         </nav>

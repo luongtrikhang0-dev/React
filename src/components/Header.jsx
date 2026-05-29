@@ -57,6 +57,12 @@ export default function Header() {
                   </Link>
                 </li>
 
+                 <li className="nav-item">
+                  <Link className="nav-link text-white" to="/giohang">
+                    Giỏ Hàng
+                  </Link>
+                </li>
+
               </ul>
 
               <form className="d-flex">

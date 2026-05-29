@@ -4,7 +4,7 @@ export default function useSearch(Data) {
     const [searchTerm, setSearchTerm] = useState("");
     // Tự động lọc danh sách dựa trên searchTerm
     const filteredData = Data.filter((item) =>
-        item.ten.toLowerCase().includes(searchTerm.toLowerCase())
+        item.tensp.toLowerCase().includes(searchTerm.toLowerCase())
     );
     // Trả về một đối tượng chứa 3 thành phần quan trọng
     return {

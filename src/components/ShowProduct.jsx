@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import products from "../data/products";
+import AddToCart from "./AddToCart";
 
 export default function SPKhuyenMai() {
   const spkm = products.filter(sp => sp.loai === "SPKM");
@@ -29,7 +30,7 @@ export default function SPKhuyenMai() {
                 >
                   Xem chi tiết
                 </Link>
-
+              <AddToCart product={sp}>Thêm vào giỏ hàng</AddToCart>
               </div>
             </div>
           </div>

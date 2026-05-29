@@ -81,22 +81,22 @@ export default function Banner() {
             />
           </div>
         </div>
-        <button
-          className="carousel-control-prev"
-          data-bs-slide="prev"
-          data-bs-target="#demo"
-          type="button">
-          <span className="carousel-control-prev-icon" />
-        </button>
-        <button
-          className="carousel-control-next"
-          data-bs-slide="next"
-          data-bs-target="#demo"
-          type="button">
-          <span className="carousel-control-next-icon" />
-        </button>
-      </div>
-    </div>
+          <button
+            className="carousel-control-prev"
+            data-bs-slide="prev"
+            data-bs-target="#demo"
+            type="button">
+            <span className="carousel-control-prev-icon" />
+          </button>
+          <button
+            className="carousel-control-next"
+            data-bs-slide="next"
+            data-bs-target="#demo"
+            type="button">
+            <span className="carousel-control-next-icon" />
+          </button>
+        </div>
+        </div>
   </div>
 </div>
     );

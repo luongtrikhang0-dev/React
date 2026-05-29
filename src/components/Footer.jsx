@@ -4,13 +4,13 @@ export default function Footer() {
   <div className="container">
     <div className="row">
       <div className="col-md-4 text-center p-4">
-        <h5>CỬA HÀNG THỜI TRANG MOINICO</h5>
+        <h5>CỬA HÀNG ĐIỆN THOẠI KANGKANG</h5>
         <p>Chuyên cung cấp các sản phẩm thời trang nam cao cấp.</p>
         <p>
           <b>Hotline:</b> 0123456789
         </p>
         <p>
-          <b>Email:</b> monicoshop@gmail.com
+          <b>Email:</b> luongtrikhang0@gmail.com
         </p>
       </div>
       <div className="col-md-4 text-center p-4">

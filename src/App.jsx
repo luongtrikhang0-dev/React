@@ -11,6 +11,7 @@ import TinTuc from "./components/TinTuc";
 import ShowProduct from "./components/ShowProduct";
 import Detail from "./pages/Detail";
 import Products from "./pages/Products";
+import Contact from "./pages/Contact";
 import Shoppingcart from "./components/ShowCart"
 export default function App() {
   return (
@@ -22,7 +23,7 @@ export default function App() {
         <Route path="/index" element={<Home />} />
         <Route path="/gioithieu" element={<About />} />
         <Route path="/sanpham" element={<Products />} />
-        <Route path="/contact" element={<h1>Liên hệ</h1>} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Detail/:id" element={<Detail />} />
         <Route path="/giohang" element={<Shoppingcart />} />

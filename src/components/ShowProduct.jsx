@@ -11,14 +11,14 @@ export default function SPKhuyenMai() {
         <h2>Sản phẩm khuyến mãi</h2>
 
         {spkm.map(sp => (
-          <div className="col-md-3" key={sp.id}>
-            <div className="card p-3">
+          <div className="col-md-3 text-center" key={sp.id}>
+            <div className="card p-3 ">
               <img
                 className="card-img-top"
                src={`/img/${sp.hinh}`}
                 alt={sp.ten}
               />
-              <div className="card-body">
+              <div className="card-body ">
                 <h4 className="card-title">{sp.ten}</h4>
                 <p className="card-text">
                   {sp.gia.toLocaleString()}đ
@@ -26,8 +26,7 @@ export default function SPKhuyenMai() {
 
                 <Link
                   to={`/Detail/${sp.id}`}
-                  className="btn btn-primary"
-                >
+                  className="btn btn-primary mb-2">
                   Xem chi tiết
                 </Link>
               <AddToCart product={sp}>Thêm vào giỏ hàng</AddToCart>
@@ -48,7 +47,7 @@ export function SPBanChay() {
       <h2>Sản phẩm bán chạy</h2>
 
       {spbc.map(sp => (
-        <div className="col-md-3" key={sp.id}>
+        <div className="col-md-3 text-center" key={sp.id}>
           <div className="card p-3">
             <img
               className="card-img-top"
@@ -63,10 +62,11 @@ export function SPBanChay() {
 
                 <Link
                   to={`/Detail/${sp.id}`}
-                  className="btn btn-primary"
+                  className="btn btn-primary mb-2"
                 >
                   Xem chi tiết
                 </Link>
+                 <AddToCart product={sp}>Thêm vào giỏ hàng</AddToCart>
             </div>
           </div>
         </div>
@@ -87,7 +87,7 @@ export function SPHot() {
       <h2>Sản phẩm hot</h2>
 
       {spht.map(sp => (
-        <div className="col-md-3" key={sp.id}>
+        <div className="col-md-3 text-center" key={sp.id}>
           <div className="card p-3">
             <img
               className="card-img-top"
@@ -102,10 +102,11 @@ export function SPHot() {
 
                 <Link
                   to={`/Detail/${sp.id}`}
-                  className="btn btn-primary"
+                  className="btn btn-primary mb-2"
                 >
                   Xem chi tiết
                 </Link>
+                 <AddToCart product={sp}>Thêm vào giỏ hàng</AddToCart>
             </div>
           </div>
         </div>
